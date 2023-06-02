@@ -1,0 +1,461 @@
+/usr/local/bin/redis-server /etc/redis/redis.conf
+
+
+Deletion of  URLs:
+redis-cli -h localhost -p 6379 -n 1 --scan --pattern P1P2P3:*html| xargs redis-cli -h localhost -p 6379 -n 1 DEL
+
+
+redis-cli -h localhost  -p 6379 config set maxclients 20000
+
+
+ php redis.php 3.13.1.115 6379 1 DC
+
+find  files
+ 
+
+find / -type f -size +1G -exec ls -lh {} \; | awk '{ print $9 ": " $5 }'
+
+ind out top Directories and files in Linux
+ du -ah /var | sort -n -r | head -n 10
+
+
+truncate
+truncate -s 1G /var/log/apache2/error.log
+truncate -s 50M /var/log/apache2/error.log.1
+truncate -s 50M /var/log/apache2/access.log.1
+
+#!/bin/bash
+path=/home/ubuntu/apps/logs/jobiak-api-service/jobiak-api-service.log
+filesize=$(du -h $path|awk {'print $1}'| cut -f1 -d".")
+if [ `echo $filesize` -gt 3 ];
+then
+sudo truncate -s 3000M $path
+else
+echo "Ignoring"
+fi
+
+
+to find heap size:
+---------------
+
+java -XX:+PrintFlagsFinal -version | grep HeapSize
+
+To find the size in MB, divide the value with (1024*1024).
+
+Increase heap size:
+sudo vim /etc/profile
+export _JAVA_OPTIONS=-Xmx2048m
+also to check
+java -XshowSettings:vm
+
+docker restart:
+ docker run --restart=always 
+ docker update --restart always $(docker ps -q)
+
+
+
+ aws s3 cp /c/Users/rakh0/Downloads/feed1/ s3://jobiak-dev/jobiak --recursive
+
+ Java Installation:
+ ------------------
+ sudo yum install java-1.8.0
+ cat /etc/environment
+JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.312.b07-1.amzn2.0.2.x86_64
+JRE_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.312.b07-1.amzn2.0.2.x86_64/jre
+
+https://www.jenkins.io/doc/tutorials/tutorial-for-installing-jenkins-on-AWS/
+sudo systemctl start  jenkins
+
+JenkinsAdmin
+Automation@123
+
+ corn configs:
+ -------------
+ */5 * * * * sh /home/ec2-user/volumescripts/vol.sh
+*/8 * * * * sh /home/ec2-user/volumescripts/del.sh
+10 */1 * * * sh /home/ec2-user/volumescripts/bigvolumes.sh
+30 * * * * sh /home/ec2-user/volumescripts/statuschecks.sh
+*/5 * * * * sh /home/ec2-user/spotcost/v4_statusspot.sh
+* * * * * sh /home/ec2-user/volumescripts/snapshot.sh
+*/25 * * * * python3 /home/ec2-user/mongo/collections_val.py
+5 16 * * * sh /home/ec2-user/snapshot/prod-mongo-ami-delete.sh
+0 12 * * * sh /home/ec2-user/snapshot/snapshot-create-del-hotcareer.sh
+17 7 * * * sh  /home/ec2-user/snapshot/hotcareer/nv/snapshot-create-del-hotcareer.sh
+31 4 * * * sh  /home/ec2-user/snapshot/hotcareer/ohio/snapshot-create-del-hotcareer.sh
+0 13 * * * sh /home/ec2-user/snapshot/p1p2p3/nv/snapshot-create-del-p1p2p3-nv.sh
+0 13 * * * sh /home/ec2-user/snapshot/p1p2p3/ohio/snapshot-create-del-p1p2p3.sh
+24 8 * * * sh /home/ec2-user/snapshot/Jobiakllc/ohio/snapshot-create-del-jobiakllc-ohio.sh
+43 8 * * * sh /home/ec2-user/snapshot/Jobiakllc/nv/snapshot-create-del-jobiakllc-nv.sh
+~
+
+sudo service php8.0-fpm restart
+
+
+https://zoom.us/j/2051159510?pwd=V2dQb1hiaUJ4akswMC9aS0R1ZXJLQT09
+
+
+to find the  ips exluding  ports with unique:
+--------------------------------
+cat 27032022 | sed 's/\:[0-9]*$//'|sort|uniq
+
+
+excel:
+-----
+=sumproduct(isnumber(search($D$2:$D$18,A2)))
+
+
+filesystem Increase:
+-------------------
+Ubuntu volume increase /dev/nvme0n1 1
+ lsblk
+ lsblk -f
+ sudo mount -o size=10M,rw,nodev,nosuid -t tmpfs tmpfs /tmp
+ sudo growpart /dev/nvme1n1 1
+ /dev/nvme1n1
+ lsblk
+ sudo resize2fs /dev/nvme0n1p1  (EXT2/EXT3/EXT4)
+     or use below command if other file system
+ sudo xfs_growfs -d /   ( XFS-type file system)
+ sudo umount /tmp
+  if disk /dev/xvda1
+ lsblk -f
+ sudo mount -o size=10M,rw,nodev,nosuid -t tmpfs tmpfs /tmp
+ sudo growpart /dev/xvda 1
+ sudo resize2fs /dev/xvda1
+ lsblk
+ sudo umount /tmp
+
+fdisk -l
+new volume attaching and  mounting
+mkfs -t xfs /dev/nvme1n1
+mount /dev/nvme1n1 /target
+ https://devopscube.com/mount-ebs-volume-ec2-instance/
+
+githubcreds:
+-----------
+username: healthcarejobsai
+password: He@lthG!t4uB
+email: admin@healthcarejobs.ai
+
+
+for /home directory and  adding user
+sudo useradd ---
+sudo passwd ---
+sudo vi /etc/ssh/sshd_config
+sudo service ssh status 
+
+usermod -aG sudo newuser
+usermod -aG 
+
+testuser ALL=NOPASSWD:/var/www/html/code
+
+ Password for the elastic user (reset with `bin/elasticsearch-reset-password -u elastic`):
+  t6BhRCxzV-_bvL*2786y
+
+sudo useradd -m -d /opt/username username
+
+
+
+
+  service openvpnas status
+  
+  hostnamectl
+
+replace a string
+  sed -i 's/please enter the redis private IP/please enter the redis private IP/g' *.sh
+sed -i 's/alljobs/careerchase/g' *.sh
+rename -v 's/record/example/' *.html
+  find a strng
+  grep -rnw . -e 'myjobsland_prod'
+
+
+sed '/^#/!s/apple/orange/g' fruits.txt
+
+  ln -s /etc/nginx/sites-available/allcareers.ai.conf /etc/nginx/sites-enabled/
+
+
+log output for  every one hour:
+------------------------------
+
+cat *.log | awk '{print $2,$4,$10}' | grep 66.249 | grep 2022-08-04T00 | grep 200 | wc -l
+cat *.log | awk '{print $2,$4,$10}' | grep 66.249 | grep 2022-08-04T00 | grep 404 | wc -l
+
+except googlebot 500 errors
+---------------------------
+cat *.log | grep -v '66.249' *.log | awk '{print $4,$10,$14}' | awk '$2=="500"'
+
+
+
+
+
+26 14 * * * sh /home/ubuntu/truncate_apiservice.sh
+
+
+
+
+
+
+https://devstudioonline.com/article/deploy-nextjs-app-with-nginx-and-pm2-on-linux-ubuntu
+
+
+Hi Sivaiah,
+
+Please find the details below.
+ServerIp:54.156.207.81
+key file:allcareers
+
+
+domain out link
+http://54.156.207.81:3000/
+
+https://usefulangle.com/post/324/aws-ec2-install-linux-apache-mysql-php-phpmyadmin-lamp-stack-ubuntu-20-04
+
+sql 5.7
+https://www.vultr.com/docs/how-to-install-mysql-5-7-on-ubuntu-20-04/
+
+
+admin
+Admindb@123
+
+
+Name:deliverydrivers-ec2-db
+Ip:54.152.134.60
+keyfile:deliverydriver
+
+My sql credentials:
+username:Admin
+password:Admindb@123
+
+
+
+to alter table
+ALTER TABLE jobs_feed ENGINE=MyISAM
+
+
+
+mongo --host localhost -u jobiakDbRootUser -p  --authenticationDatabase admin
+
+zHopejyc9kpezRStFnxPJDe4MQ95N
+
+
+
+rm -rf /recovery/var/lib/cloud/* 
+
+/var/lib/cloud/instance
+
+
+/dev/sda1
+
+
+Recovery for instance for ML:
+-----------------------------
+mkdir /recovery
+mount /dev/xvdf1 /recovery
+rm -rf /recovery/var/lib/cloud/*
+umount /recovery
+
+pointing back it to root
+/dev/sda1
+
+add ssm key role to connect
+
+
+mongodb dump using cli:
+-----------------------
+mongorestore -u user_name -p password --authenticationDatabase db_name --db db_name --collection collection_name dump/db_name/collection_name.bson
+mongodump -u user_name -p'password' --authenticationDatabase admin -d prod_jobiak_ai -c job -o /home/ubuntu/backup
+
+mongodump -u jobsusa_root -p'8O9Oqg7GVa70xD80P5' --authenticationDatabase admin -d -c system.profile -o /var/log/systemprofilebkp/
+
+for medichire,healthcare,carecrew
+sudo find /var/www/html/medichire.ai/medichire/public/page-cache/viewjob -name "*.html" -type f -mtime +1 -delete
+
+sudo find /var/www/html/healthcarejobs/public/page-cache/viewjob -name "*.html" -type f -mtime +1 -delete
+
+sudo mongod --auth --port 27017 --config /etc/mongod.conf
+
+
+
+mongodb://jainendra:87W3aWML7x2K@44.199.108.161:27017/titletotitle?
+
+ansible: 
+for user creation
+
+ansible-playbook testing.yaml -e @vars.yml
+
+
+ServerName:AUD-Expansion-Extraction-Alljobs-JobsUSA
+ServerIP:3.208.160.217
+
+
+query for dumping:
+
+mongodump -ujobiakCacheUser -p'2sSTf3A9PuTFa6jp8m7sXUUBv' --authenticationDatabase cache -d cache -c jobCache  --query='{"insertedDate":{"$lte":{"$date":"2022-08-15T00:00:00.000+0000" } }, "jobInfo.status" : "removed", "jobInfo.isActive" : false }'  -o /newvolume/
+
+
+costexplorer using cli:
+aws ce get-cost-and-usage --time-period Start=2022-09-01,End=2022-09-30 --granularity=MONTHLY --metrics=BlendedCost --profile MedichireNew-436211673009 --output table
+to get report based on services:
+aws ce get-cost-and-usage --time-period Start=2022-09-01,End=2022-09-30 --granularity=MONTHLY --metrics=BlendedCost --group-by Type=DIMENSION,Key=SERVICE --profile MedichireNew-436211673009 --output table
+
+
+
+windows CPU and memorycheck 
+To open up Resource Monitor, press Windows Key + R and type resmon into the search box.
+resmon
+
+
+jyothichundihyd
+9QO69LLap4XQ64WW6K
+
+sudo useradd -m  RaviKukkadapuhyd 
+sudo passwd RaviKukkadapuhyd
+
+sudo vi /etc/ssh/sshd_config
+
+change->"PasswordAuthentication no" to "PasswordAuthentication yes"
+sudo service ssh restart
+
+sudo chmod 755 /etc/sudoers
+ visudo /etc/sudoers
+
+add below:
+
+jyothichundihyd ALL=(ALL:ALL) NOPASSWD:/bin/cp,/bin/mkdir,/bin/chown,/bin/rm,/bin/touch,/bin/chmod,/bin/vim,/bin/nano,/bin/cat,/bin/vi,/bin/apt-get,/bin/systemctl,/bin/git,/bin/tail
+RaviKukkadapuhyd ALL=(ALL:ALL) NOPASSWD:/bin/cp,/bin/mkdir,/bin/chown,/bin/rm,/bin/touch,/bin/chmod,/bin/vim,/bin/nano,/bin/cat,/bin/vi,/bin/apt-get,/bin/systemctl,/bin/git,/bin/tail
+
+sudo chmod 440 /etc/sudoers
+
+
+jyothichundihyd ALL=(ALL:ALL) NOPASSWD:/bin/cp,/bin/mkdir,/bin/chown,/bin/rm,/bin/touch,/bin/chmod,/bin/vim,/bin/nano,/bin/cat,/bin/vi,/bin/apt-get,/bin/git,/bin/systemctl,/bin/tail
+
+
+https://stackoverflow.com/questions/29535686/ubuntu-server-sudo-error-aws-ec2
+
+
+visudo
+
+to get all the snasphot volumes:
+-------------------------------
+aws ec2 describe-snapshots --owner-ids  self --profile  ___  --region ___|grep VolumeId
+
+
+
+ansible:
+ansible-playbook testing.yaml -e @vars.yml
+ansible-playbook userpermission.yaml -e @userdetails.yaml
+
+
+
+
+sudo nginx -t -c /etc/nginx/sites-available/
+
+to search for custom metrics command
+
+NOT AWS
+
+Check user logs:
+---------------
+
+/var/log/auth.log
+
+
+
+Today we had a discussion with the AWS team and gave the following details.As per the there was a packet drops due to exceeding the CPU limiters and the traffic was shaped again because of instance limiters. It is related to the db load. If there are queries without proper indexes, they will consume high CPU and memory, and respond times will increase.Connections will be closed until the existing connections finish their work
+
+
+
+
+
+
+
+--------------------------------
+Open Putty for connect to Server
+
+Give server details  ( Public ip & ppk file )
+
+Enter below two command to create user
+  sudo useradd -m  Username
+  sudo passwd Username  (Enter - give password two time )
+
+After opening the sshd_config file to make user passwordauthentication permission use below two steps.
+  sudo vi /etc/ssh/sshd_config
+  change->"PasswordAuthentication no" to "PasswordAuthentication yes"
+
+Save edit permission after restart ssh
+  sudo service ssh restart
+
+Change permission for write access on file :
+   sudo chmod 755 /etc/sudoers
+
+Open sudoers file to add user
+    visudo /etc/sudoers
+
+
+Add Username & permission on file add below details:
+sandeepkanni ALL=(ALL:ALL) NOPASSWD:/bin/cp,/bin/mkdir,/bin/chown,/bin/rm,/bin/touch,/bin/chmod,/bin/vim,/bin/nano,/bin/cat,/bin/vi,/bin/apt-get,/bin/systemctl,/bin/git,/bin/crontab,/bin/tail
+
+NOTE: please  double check while adding the user and also please  makesure  you open the file with "visudo".
+
+Change back to read access only the file:
+   sudo chmod  440 /etc/sudoers
+
+
+
+   git author change
+   https://stackoverflow.com/questions/3042437/how-to-change-the-commit-author-for-a-single-commit
+
+
+scp from the source to destination:
+------------------------
+
+scp -r /var/www/html/api/allcareers/api root@172.31.65.179:/var/www/html/apiallcareers
+
+
+
+
+
+when ever you restarted akarventures.com server please makesure to stop apache and start the nginx use below commands
+systemctl stop apache2
+systemctl start nginx
+systemctl status nginx
+
+
+
+findmyjobAtoC Optmization run initiated spot request id is :sfr-6ba8f621-8093-4f21-8ce2-ae4f44affb41.
+findmyjobDtoI Optmization run initiated spot request id is :sfr-a9db79d4-310e-413d-b4e4-d7cbc04e8615.
+findmyjobJtoL Optmization run initiated spot request id is :sfr-e61c6bf5-5f94-4421-9175-e4bea9205ede.
+findmyjobMtoR Optmization run initiated spot request id is :sfr-b5ec8070-5542-4790-9318-e236838011be.
+findmyjobSto9 Optmization run initiated spot request id is :sfr-76b689c7-ccef-469b-894c-e3c161044b69.
+
+
+to retreive the unused space use the below command
+docker image prune -a
+docker system prune -a
+
+
+Jobiak knowledge center
+https://jobiak.ai/jobiak-knowledge-center/
+
+
+/home/ec2-user/scripts/aud40k/landingpage.sh
+
+bulk tab opener
+
+https://chrome.google.com/webstore/detail/bulk-url-opener-extension/hgenngnjgfkdggambccohomebieocekm?hl=en
+
+sudo caddy renew
+
+
+find a file and replace in all subdirectories:
+find . -type f -exec sed -i 's/subnet-6c037a33, subnet-e6bf3fd7, subnet-ceafa383, subnet-b1304a90, subnet-f00630fe, subnet-4d473b2b/subnet-07fe0bc11b568e13a, subnet-050185d5f6a7fb97f, subnet-0e8e1445fef755e87/g' {} +
+find . -type f -exec sed -i 's/\"SpotPrice\"\: \"0\.018\"/\"SpotPrice\"\: \"0\.020\"/g' {} +
+sed -i 's/\"SpotPrice\"\: \"0\.018\"/\"SpotPrice\"\: \"0\.020\"/g'
+
+
+zcat *.log.gz | grep -v '66.249|185.|68.|122' | awk ' $9 == 504 '
+
+
+arn:aws:sns:us-east-2:206760334398:AUD-Cluster-Status
+sed -i 's/"arn\:aws\:sns\:us-east-2\:206760334398\:AUD-Cluster-Status"/"arn\:aws\:sns\:us-east-1\:509372684914\:AUD-Cluster-Status"/g' *.sh
+arn:aws:sns:us-east-1:509372684914:AUD-Cluster-Status
