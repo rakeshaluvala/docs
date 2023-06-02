@@ -233,8 +233,6 @@ ALTER TABLE jobs_feed ENGINE=MyISAM
 
 
 
-mongo --host localhost -u jobiakDbRootUser -p  --authenticationDatabase admin
-
 zHopejyc9kpezRStFnxPJDe4MQ95N
 
 
@@ -261,11 +259,7 @@ add ssm key role to connect
 
 
 mongodb dump using cli:
------------------------
-mongorestore -u user_name -p password --authenticationDatabase db_name --db db_name --collection collection_name dump/db_name/collection_name.bson
-mongodump -u user_name -p'password' --authenticationDatabase admin -d prod_jobiak_ai -c job -o /home/ubuntu/backup
 
-mongodump -u jobsusa_root -p'8O9Oqg7GVa70xD80P5' --authenticationDatabase admin -d -c system.profile -o /var/log/systemprofilebkp/
 
 for medichire,healthcare,carecrew
 sudo find /var/www/html/medichire.ai/medichire/public/page-cache/viewjob -name "*.html" -type f -mtime +1 -delete
@@ -276,8 +270,6 @@ sudo mongod --auth --port 27017 --config /etc/mongod.conf
 
 
 
-mongodb://jainendra:87W3aWML7x2K@44.199.108.161:27017/titletotitle?
-
 ansible: 
 for user creation
 
@@ -287,10 +279,6 @@ ansible-playbook testing.yaml -e @vars.yml
 ServerName:AUD-Expansion-Extraction-Alljobs-JobsUSA
 ServerIP:3.208.160.217
 
-
-query for dumping:
-
-mongodump -ujobiakCacheUser -p'2sSTf3A9PuTFa6jp8m7sXUUBv' --authenticationDatabase cache -d cache -c jobCache  --query='{"insertedDate":{"$lte":{"$date":"2022-08-15T00:00:00.000+0000" } }, "jobInfo.status" : "removed", "jobInfo.isActive" : false }'  -o /newvolume/
 
 
 costexplorer using cli:
@@ -305,8 +293,6 @@ To open up Resource Monitor, press Windows Key + R and type resmon into the sear
 resmon
 
 
-jyothichundihyd
-9QO69LLap4XQ64WW6K
 
 sudo useradd -m  RaviKukkadapuhyd 
 sudo passwd RaviKukkadapuhyd
